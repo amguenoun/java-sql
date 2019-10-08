@@ -194,3 +194,21 @@ Take the following data and normalize it into a 3NF database.  You can use the w
   - the `id` should be the primary key for the table.
   - account `name` should be unique.
   - account `budget` is required.
+
+
+~~~
+CREATE DATABASE budget
+    WITH 
+    OWNER = postgres
+    ENCODING = 'UTF8'
+    CONNECTION LIMIT = -1;
+
+CREATE TABLE accounts (
+   id SERIAL  PRIMARY KEY,
+   name VARCHAR (50) ,
+   budget REAL,
+        UNIQUE(name)
+);
+
+
+~~~
