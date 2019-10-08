@@ -40,6 +40,7 @@ Select *
 FROM customers
 WHERE upper(city) = 'LONDON'
 ~~~
+
 ### find all customers with postal code 1010. Returns 3 customers.
 > This can be done with SELECT and WHERE clauses
 ~~~
@@ -47,17 +48,30 @@ Select *
 FROM customers
 WHERE postal_code = '1010'
 ~~~
+
 ### find the phone number for the supplier with the id 11. Should be (010) 9984510.
 > This can be done with SELECT and WHERE clauses
-
+~~~
+SELECT phone
+FROM suppliers
+WHERE supplier_id = '11'
+~~~
 
 ### list orders descending by the order date. The order with date 1998-05-06 should be at the top.
 > This can be done with SELECT, WHERE, and ORDER BY clauses
-
+~~~~
+SELECT *
+FROM orders
+ORDER BY order_date desc 
+~~~~
 
 ### find all suppliers who have names longer than 20 characters. You can use `length(company_name)` to get the length of the name. Returns 11 records.
 > This can be done with SELECT and WHERE clauses
-
+~~~
+SELECT *
+FROM suppliers
+WHERE length(company_name) > 20
+~~~
 
 ### find all customers that include the word 'MARKET' in the contact title. Should return 19 records.
 > This can be done with SELECT and a WHERE clause using the LIKE keyword
@@ -66,6 +80,11 @@ WHERE postal_code = '1010'
 
 > Remember to convert your contact title to all upper case for case insenstive comparing so upper(contact_title)
 
+~~~~
+SELECT *
+FROM customers
+WHERE upper(contact_title) like '%MARKET%'
+~~~~
 
 ### add a customer record for   
 * customer id is 'SHIRE'
