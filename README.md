@@ -151,7 +151,7 @@ Take the following data and normalize it into a 3NF database.  You can use the w
 | Bob         | Joe      | Horse    |            |            |            |            | No          | No           |
 | Sam         | Ginger   | Dog      | Miss Kitty | Cat        | Bubble     | Fish       | Yes         | No           |
 
-~~~
+
 | Person ID | Person Name | Fenced Yard | City Dweller |
 |-----------|-------------|-------------|--------------|
 | 1         | Jane        | No          | Yes          |
@@ -167,7 +167,7 @@ Take the following data and normalize it into a 3NF database.  You can use the w
 | 5      | Ginger     | Dog      | 3         |
 | 6      | Miss Kitty | Cat      | 3         |
 | 7      | Bubble     | Fish     | 3         |
-~~~
+
 
 ---
 ## Stretch Goals
