@@ -43,7 +43,7 @@ WHERE upper(city) = 'LONDON'
 
 ### find all customers with postal code 1010. Returns 3 customers.
 > This can be done with SELECT and WHERE clauses
-~~~
+~~~sql
 Select *
 FROM customers
 WHERE postal_code = '1010'
@@ -51,7 +51,7 @@ WHERE postal_code = '1010'
 
 ### find the phone number for the supplier with the id 11. Should be (010) 9984510.
 > This can be done with SELECT and WHERE clauses
-~~~
+~~~sql
 SELECT phone
 FROM suppliers
 WHERE supplier_id = '11'
@@ -59,7 +59,7 @@ WHERE supplier_id = '11'
 
 ### list orders descending by the order date. The order with date 1998-05-06 should be at the top.
 > This can be done with SELECT, WHERE, and ORDER BY clauses
-~~~~
+~~~~sql
 SELECT *
 FROM orders
 ORDER BY order_date desc 
@@ -67,7 +67,7 @@ ORDER BY order_date desc
 
 ### find all suppliers who have names longer than 20 characters. You can use `length(company_name)` to get the length of the name. Returns 11 records.
 > This can be done with SELECT and WHERE clauses
-~~~
+~~~sql
 SELECT *
 FROM suppliers
 WHERE length(company_name) > 20
@@ -80,7 +80,7 @@ WHERE length(company_name) > 20
 
 > Remember to convert your contact title to all upper case for case insenstive comparing so upper(contact_title)
 
-~~~~
+~~~~sql
 SELECT *
 FROM customers
 WHERE upper(contact_title) like '%MARKET%'
@@ -95,14 +95,14 @@ WHERE upper(contact_title) like '%MARKET%'
 * the postal code is '111'
 * the country is 'Middle Earth'
 > This can be done with the INSERT INTO clause
-~~~
+~~~sql
 INSERT INTO customers(customer_id, company_name, contact_name, address, city, postal_code, country)
 VALUES ('SHIRE', 'The Shire', 'Bilbo Baggins', '1 Hobbit Hole', 'Bag End', '111', 'Middle Earth')
 ~~~
 
 ### update _Bilbo Baggins_ record so that the postal code changes to _"11122"_.
 > This can be done with UPDATE and WHERE clauses
-~~~
+~~~sql
 UPDATE customers
 SET postal_code = '11122'
 WHERE customer_id = 'SHIRE'
@@ -112,7 +112,7 @@ WHERE customer_id = 'SHIRE'
 > This can be done with SELECT, COUNT, JOIN and GROUP BY clauses. Your count should focus on a field in the Orders table, not the Customer table
 
 > There is more information about the COUNT clause on [W3 Schools](https://www.w3schools.com/sql/sql_count_avg_sum.asp)
-~~~
+~~~sql
 SELECT c.contact_name, count(o.customer_id) as orders
 FROM orders o JOIN customers c
 ON o.customer_id = c.customer_id
@@ -121,7 +121,7 @@ GROUP BY c.contact_name
 
 ### list customers names and the number of orders per customer. Sort the list by number of orders in descending order. _Save-a-lot Markets should be at the top with 31 orders followed by _Ernst Handle_ with 30 orders. Last should be _Centro comercial Moctezuma_ with 1 order.
 > This can be done by adding an ORDER BY clause to the previous answer
-~~~
+~~~sql
 SELECT c.company_name, count(o.customer_id) as orders
 FROM orders o JOIN customers c
 ON o.customer_id = c.customer_id
@@ -131,7 +131,7 @@ ORDER BY orders desc
 
 ### list orders grouped by customer's city showing number of orders per city. Returns 69 Records with _Aachen_ showing 6 orders and _Albuquerque_ showing 18 orders.
 > This is very similar to the previous two queries, however, it focuses on the City rather than the CustomerName
-~~~
+~~~sql
 SELECT c.city, count(o.customer_id) as orders
 FROM orders o JOIN customers c
 ON o.customer_id = c.customer_id
@@ -179,7 +179,7 @@ Take the following data and normalize it into a 3NF database.  You can use the w
  
 > Use a LEFT JOIN to join the Orders table onto the Customers table and check for a NULL value in the OrderID column
 
-~~~
+~~~sql
 DELETE
 FROM customers
 WHERE customer_id in (SELECT c.customer_id
@@ -205,7 +205,7 @@ WHERE order_id is null)
   - account `budget` is required.
 
 
-~~~
+~~~sql
 CREATE DATABASE budget
     WITH 
     OWNER = postgres
